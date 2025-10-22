@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miel Natural para la Familia - Miel Orgánica de Calidad 🍯</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // 🎨 3. GUÍA DE ESTILO Y DISEÑO
+                    colors: {
+                        'primary-dark-red': '#9B2C2C', // Rojo oscuro (Marrón rojizo de la miel)
+                        'secondary-gold': '#D69E2E', // Dorado (Miel/Oro)
+                        'text-dark': '#2D3748', // Gris oscuro
+                        'bg-bone': '#F7FAFC', // Blanco hueso
+                        'header-bg': 'rgba(26, 32, 44, 0.8)', // Fondo de header semi-transparente
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'], // Títulos
+                        'sans': ['Lato', 'sans-serif'], // Cuerpo de texto
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 🎨 3. GUÍA DE ESTILO: Estilos generales y del Header/CTA */
+
+        body {
+            background-color: #F7FAFC; /* Fondo blanco hueso */
+            color: #2D3748; /* Color de texto gris oscuro */
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* Estilo del Header: Transparente con Blur (backdrop-filter) */
+        .sticky-header {
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+        }
+        .header-scrolled {
+            background-color: rgba(26, 32, 44, 0.95) !important; /* Oscurece al hacer scroll */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* Para compatibilidad */
+        }
+
+        /* Estilo del Botón CTA: Gradiente dorado con sombra y hover */
+        .cta-button {
+            background: linear-gradient(to right, #D69E2E, #e5b85c);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2 px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .cta-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Estilo para las tarjetas (cards) */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para el fondo con textura ligera (opcional, simulación con degradado) */
+        .textured-bg {
+            background-image: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(247,250,252,1) 100%);
+        }
+
+        /* Estilo específico para el Swiper del Hero (pantalla completa) */
+        .hero-swiper .swiper-slide {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilo para el menú de hamburguesa móvil */
+        .mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .mobile-menu.open {
+            max-height: 500px; /* Suficiente para mostrar todo el menú */
+        }
+
+        /* Estilo para el botón flotante de WhatsApp */
+        .whatsapp-float {
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <a href="https://wa.me/XXXXXXXXXX" target="_blank" class="whatsapp-float fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <header id="header" class="sticky-header fixed top-0 left-0 w-full z-50 bg-transparent text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#inicio" class="text-3xl font-serif font-bold text-secondary-gold hover:text-white transition duration-300">
+                Miel <span class="text-primary-dark-red">Natural</span>
+            </a>
+
+            <nav class="hidden md:flex space-x-8 font-sans font-medium text-lg">
+                <a href="#inicio" class="hover:text-secondary-gold transition duration-300 nav-link">Inicio</a>
+                <a href="#quienes-somos" class="hover:text-secondary-gold transition duration-300 nav-link">Quiénes Somos</a>
+                <a href="#servicios" class="hover:text-secondary-gold transition duration-300 nav-link">Productos</a>
+                <a href="#galeria" class="hover:text-secondary-gold transition duration-300 nav-link">Galería</a>
+                <a href="#contacto" class="hover:text-secondary-gold transition duration-300 nav-link">Contacto</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <nav id="mobile-menu" class="mobile-menu md:hidden bg-header-bg text-center">
+            <a href="#inicio" class="block py-3 px-6 hover:bg-gray-700 nav-link">Inicio</a>
+            <a href="#quienes-somos" class="block py-3 px-6 hover:bg-gray-700 nav-link">Quiénes Somos</a>
+            <a href="#servicios" class="block py-3 px-6 hover:bg-gray-700 nav-link">Productos</a>
+            <a href="#galeria" class="block py-3 px-6 hover:bg-gray-700 nav-link">Galería</a>
+            <a href="#contacto" class="block py-3 px-6 hover:bg-gray-700 nav-link">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero-swiper swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide relative" style="background-image: url('img/s1.jpg');">
+                    <div class="absolute inset-0 bg-black opacity-40"></div>
+                    <div class="container mx-auto px-6 text-center z-10 text-white" data-aos="fade-up" data-aos-duration="1000">
+                        <h1 class="text-6xl md:text-8xl font-serif font-bold mb-4">La Dulzura de la Naturaleza</h1>
+                        <p class="text-xl md:text-3xl mb-8 font-light max-w-3xl mx-auto">Miel orgánica cruda, directo del panal a tu mesa. Sabor y salud en cada cucharada.</p>
+                        <a href="#servicios" class="cta-button py-3 px-8 text-lg md:text-xl rounded-full text-white font-bold inline-block shadow-xl">Ver Nuestros Productos</a>
+                    </div>
+                </div>
+                <div class="swiper-slide relative" style="background-image: url('img/s2.jpg');">
+                    <div class="absolute inset-0 bg-black opacity-40"></div>
+                    <div class="container mx-auto px-6 text-center z-10 text-white" data-aos="fade-up" data-aos-duration="1000">
+                        <h2 class="text-6xl md:text-8xl font-serif font-bold mb-4">Cosecha Artesanal</h2>
+                        <p class="text-xl md:text-3xl mb-8 font-light max-w-3xl mx-auto">Métodos tradicionales que conservan todas sus propiedades y pureza.</p>
+                        <a href="#contacto" class="cta-button py-3 px-8 text-lg md:text-xl rounded-full text-white font-bold inline-block shadow-xl">¡Contáctanos Hoy!</a>
+                    </div>
+                </div>
+                <div class="swiper-slide relative" style="background-image: url('img/s3.jpg');">
+                    <div class="absolute inset-0 bg-black opacity-40"></div>
+                    <div class="container mx-auto px-6 text-center z-10 text-white" data-aos="fade-up" data-aos-duration="1000">
+                        <h2 class="text-6xl md:text-8xl font-serif font-bold mb-4">El Poder de lo Orgánico</h2>
+                        <p class="text-xl md:text-3xl mb-8 font-light max-w-3xl mx-auto">Libre de aditivos y pesticidas. La mejor opción para tu familia.</p>
+                        <a href="#servicios" class="cta-button py-3 px-8 text-lg md:text-xl rounded-full text-white font-bold inline-block shadow-xl">Descubre la Diferencia</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next text-white"></div>
+            <div class="swiper-button-prev text-white"></div>
+        </section>
+        
+        <section id="quienes-somos" class="textured-bg py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-serif font-bold text-center mb-12 text-primary-dark-red" data-aos="fade-down">Nuestra Historia: El Origen de Miel Natural</h2>
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2" data-aos="fade-right" data-aos-duration="1000">
+                        <img src="img/s3.jpg" alt="Apicultor trabajando con colmenas" class="rounded-xl shadow-2xl object-cover h-96 w-full">
+                        </div>
+                    <div class="lg:w-1/2 text-lg" data-aos="fade-left" data-aos-duration="1000">
+                        <p class="mb-6">Nacimos de una pasión profunda por la **apicultura tradicional** y el respeto por el medio ambiente. Todo comenzó en 2010, cuando nuestro fundador, un biólogo aficionado, decidió transformar su pequeño apiario familiar en un proyecto de miel orgánica.</p>
+                        <p class="mb-6">Crecemos bajo el sol y el cuidado de manos expertas, asegurando que nuestras abejas solo se alimenten del néctar puro de las flores silvestres. No usamos pesticidas ni aditivos. Nuestro compromiso es la pureza y el sabor inigualable de una miel verdaderamente **natural y cruda**.</p>
+                        <p class="font-bold">¡Más que miel, es un legado de salud y tradición!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-serif font-bold text-center mb-12 text-secondary-gold" data-aos="fade-down">Nuestros Pilares</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 bg-bg-bone rounded-xl shadow-lg text-center card-hover" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fas fa-seedling text-5xl text-primary-dark-red mb-4"></i>
+                        <h3 class="text-2xl font-serif font-bold mb-3">Misión: Pureza</h3>
+                        <p>Ofrecer la miel más pura y orgánica, protegiendo la salud del consumidor y el ecosistema de las abejas.</p>
+                    </div>
+                    <div class="p-8 bg-bg-bone rounded-xl shadow-lg text-center card-hover" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fas fa-sun text-5xl text-secondary-gold mb-4"></i>
+                        <h3 class="text-2xl font-serif font-bold mb-3">Visión: Liderazgo</h3>
+                        <p>Ser reconocidos como la marca líder en miel orgánica premium, sin comprometer nuestros valores artesanales.</p>
+                    </div>
+                    <div class="p-8 bg-bg-bone rounded-xl shadow-lg text-center card-hover" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="fas fa-handshake text-5xl text-primary-dark-red mb-4"></i>
+                        <h3 class="text-2xl font-serif font-bold mb-3">Valores: Integridad</h3>
+                        <p>Trabajamos con transparencia, respeto a la naturaleza y un compromiso inquebrantable con la calidad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="textured-bg py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-serif font-bold text-center mb-12 text-primary-dark-red" data-aos="fade-down">Nuestros Productos Destacados</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative">
+                            <img src="img/s2.jpg" alt="Tarro de miel multifloral" class="w-full h-56 object-cover">
+                            <span class="absolute top-3 right-3 bg-secondary-gold text-white text-sm font-bold px-3 py-1 rounded-full">¡El Favorito!</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-serif font-bold mb-2">Miel Multifloral Clásica</h3>
+                            <p class="text-text-dark mb-3">Sabor suave y dulce, ideal para el desayuno o para endulzar el té.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-3xl font-bold text-primary-dark-red">$15.00</span>
+                                <a href="#" class="cta-button py-2 px-4 text-sm rounded-full text-white font-bold">Comprar <i class="fas fa-shopping-cart ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative">
+                            <img src="img/s3.jpg" alt="Tarro de miel de azahar" class="w-full h-56 object-cover">
+                            </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-serif font-bold mb-2">Miel de Azahar</h3>
+                            <p class="text-text-dark mb-3">Notas cítricas y florales. Perfecta para postres gourmet y bebidas frías.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-3xl font-bold text-primary-dark-red">$18.50</span>
+                                <a href="#" class="cta-button py-2 px-4 text-sm rounded-full text-white font-bold">Comprar <i class="fas fa-shopping-cart ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative">
+                            <img src="img/s1.jpg" alt="Miel oscura" class="w-full h-56 object-cover">
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-sm font-bold px-3 py-1 rounded-full">Especial del Apicultor</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-serif font-bold mb-2">Miel de Aguacate</h3>
+                            <p class="text-text-dark mb-3">Oscura, con sabor a malta y notas afrutadas. Ideal para maridar con quesos.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-3xl font-bold text-primary-dark-red">$22.00</span>
+                                <a href="#" class="cta-button py-2 px-4 text-sm rounded-full text-white font-bold">Comprar <i class="fas fa-shopping-cart ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="400">
+                        <img src="img/s4.png" alt="Miel con propóleo" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-serif font-bold mb-2">Miel con Propóleo</h3>
+                            <p class="text-text-dark mb-3">Potencia tu sistema inmune con un extra natural.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-3xl font-bold text-primary-dark-red">$25.00</span>
+                                <a href="#" class="cta-button py-2 px-4 text-sm rounded-full text-white font-bold">Comprar <i class="fas fa-shopping-cart ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="500">
+                        <img src="img/s2.jpg" alt="Jalea real pura" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-serif font-bold mb-2">Jalea Real Pura</h3>
+                            <p class="text-text-dark mb-3">El superalimento de la colmena. Energía y vitalidad.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-3xl font-bold text-primary-dark-red">$35.00</span>
+                                <a href="#" class="cta-button py-2 px-4 text-sm rounded-full text-white font-bold">Comprar <i class="fas fa-shopping-cart ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="600">
+                        <div class="relative">
+                            <img src="img/s5.png" alt="Polen de flores" class="w-full h-56 object-cover">
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-sm font-bold px-3 py-1 rounded-full">Edición Limitada</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-serif font-bold mb-2">Polen de Flores</h3>
+                            <p class="text-text-dark mb-3">Fuente de proteínas y vitaminas, recolectado con cuidado.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-3xl font-bold text-primary-dark-red">$19.99</span>
+                                <a href="#" class="cta-button py-2 px-4 text-sm rounded-full text-white font-bold">Comprar <i class="fas fa-shopping-cart ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-serif font-bold text-center mb-12 text-secondary-gold" data-aos="fade-down">Nuestros Servicios Adicionales</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 bg-bg-bone rounded-xl shadow-lg text-center card-hover" data-aos="fade-right" data-aos-delay="100">
+                        <i class="fas fa-truck text-5xl text-primary-dark-red mb-4"></i>
+                        <h3 class="text-2xl font-serif font-bold mb-3">Venta Online y Envíos</h3>
+                        <p>Compra fácil y rápido desde casa. Envíos nacionales y seguimiento detallado de tu pedido.</p>
+                    </div>
+                    <div class="p-8 bg-bg-bone rounded-xl shadow-lg text-center card-hover" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fas fa-boxes text-5xl text-secondary-gold mb-4"></i>
+                        <h3 class="text-2xl font-serif font-bold mb-3">Distribución Mayorista</h3>
+                        <p>Precios especiales para tiendas de productos orgánicos, panaderías y negocios de alimentos.</p>
+                    </div>
+                    <div class="p-8 bg-bg-bone rounded-xl shadow-lg text-center card-hover" data-aos="fade-left" data-aos-delay="300">
+                        <i class="fas fa-home text-5xl text-primary-dark-red mb-4"></i>
+                        <h3 class="text-2xl font-serif font-bold mb-3">Experiencia Apícola</h3>
+                        <p>Visitas guiadas a nuestro apiario (con cita). Conoce el proceso y a nuestras abejas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="textured-bg py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-serif font-bold text-center mb-12 text-primary-dark-red" data-aos="fade-down">Galería de Nuestros Productos</h2>
+                
+                <div class="flex justify-center flex-wrap gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
+                    <button class="filter-btn cta-button py-2 px-6 rounded-full text-white font-bold" data-filter="all">Todo</button>
+                    <button class="filter-btn bg-gray-500 hover:bg-gray-700 py-2 px-6 rounded-full text-white font-bold transition duration-300" data-filter="productos">Productos</button>
+                    <button class="filter-btn bg-gray-500 hover:bg-gray-700 py-2 px-6 rounded-full text-white font-bold transition duration-300" data-filter="proceso">Proceso</button>
+                    <button class="filter-btn bg-gray-500 hover:bg-gray-700 py-2 px-6 rounded-full text-white font-bold transition duration-300" data-filter="uso">Uso</button>
+                </div>
+                
+                <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="gallery-item productos" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="relative overflow-hidden rounded-xl shadow-lg group">
+                            <img src="https://images.pexels.com/photos/5632386/pexels-photo-5632386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Miel en tarro de vidrio" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+                                <i class="fas fa-search-plus text-white text-3xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item proceso" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="relative overflow-hidden rounded-xl shadow-lg group">
+                            <img src="https://images.unsplash.com/photo-1574312781358-132039757692?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Colmenas en el campo" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+                                <i class="fas fa-search-plus text-white text-3xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item uso" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="relative overflow-hidden rounded-xl shadow-lg group">
+                            <img src="https://images.pexels.com/photos/4033142/pexels-photo-4033142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Miel en una tostada" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+                                <i class="fas fa-search-plus text-white text-3xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item productos" data-aos="zoom-in" data-aos-delay="400"><div class="relative overflow-hidden rounded-xl shadow-lg group"><img src="https://images.pexels.com/photos/3371302/pexels-photo-3371302.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Diferentes tipos de miel" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500"><i class="fas fa-search-plus text-white text-3xl"></i></div></div></div>
+                    <div class="gallery-item proceso" data-aos="zoom-in" data-aos-delay="500"><div class="relative overflow-hidden rounded-xl shadow-lg group"><img src="https://images.unsplash.com/photo-1582298642398-e76317b9b1d9?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Extracción de panal" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500"><i class="fas fa-search-plus text-white text-3xl"></i></div></div></div>
+                    <div class="gallery-item uso" data-aos="zoom-in" data-aos-delay="600"><div class="relative overflow-hidden rounded-xl shadow-lg group"><img src="https://images.pexels.com/photos/10186105/pexels-photo-10186105.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Yogurt con miel" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500"><i class="fas fa-search-plus text-white text-3xl"></i></div></div></div>
+                    <div class="gallery-item productos" data-aos="zoom-in" data-aos-delay="700"><div class="relative overflow-hidden rounded-xl shadow-lg group"><img src="https://images.pexels.com/photos/17698501/pexels-photo-17698501/free-photo-of-producto-alimentacion-miel-botella.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Miel envasada" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500"><i class="fas fa-search-plus text-white text-3xl"></i></div></div></div>
+                    <div class="gallery-item proceso" data-aos="zoom-in" data-aos-delay="800"><div class="relative overflow-hidden rounded-xl shadow-lg group"><img src="https://images.unsplash.com/photo-1547474136-e822453c1537?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Abejas en el panal" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500"><i class="fas fa-search-plus text-white text-3xl"></i></div></div></div>
+                    <div class="gallery-item uso" data-aos="zoom-in" data-aos-delay="900"><div class="relative overflow-hidden rounded-xl shadow-lg group"><img src="https://images.pexels.com/photos/14102213/pexels-photo-14102213.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Té con miel" class="w-full h-72 object-cover transition duration-500 group-hover:scale-105"><div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500"><i class="fas fa-search-plus text-white text-3xl"></i></div></div></div>
+                    </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-serif font-bold text-center mb-12 text-secondary-gold" data-aos="fade-down">Lo que Dicen Nuestros Clientes</h2>
+
+                <div class="swiper-container testimonial-swiper max-w-4xl mx-auto shadow-2xl rounded-xl p-8 bg-bg-bone" data-aos="fade-up" data-aos-delay="200">
+                    <div class="swiper-wrapper">
+                        
+                        <div class="swiper-slide p-4 text-center">
+                            <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente María G." class="object-cover w-full h-full">
+                            </div>
+                            <p class="italic text-lg mb-4 text-text-dark">"¡La mejor miel orgánica que he probado! Su sabor es increíblemente floral y se nota la calidad artesanal. Mi familia lo usa para todo, desde el té hasta el panqueque."</p>
+                            <p class="font-bold text-primary-dark-red text-xl">María G.</p>
+                            <p class="text-sm">Compradora recurrente</p>
+                        </div>
+
+                        <div class="swiper-slide p-4 text-center">
+                            <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente Juan P." class="object-cover w-full h-full">
+                            </div>
+                            <p class="italic text-lg mb-4 text-text-dark">"Compré el pack de miel de aguacate y es espectacular para maridar con mi tabla de quesos. El envío fue rápido y el empaque muy profesional. ¡Recomendadísimo!"</p>
+                            <p class="font-bold text-primary-dark-red text-xl">Juan P.</p>
+                            <p class="text-sm">Cliente Gourmet</p>
+                        </div>
+
+                        <div class="swiper-slide p-4 text-center">
+                            <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+                                <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Cliente Sofía R." class="object-cover w-full h-full">
+                            </div>
+                            <p class="italic text-lg mb-4 text-text-dark">"Valoro mucho el compromiso con lo orgánico y el cuidado de las abejas. La miel tiene una textura suave y un color dorado hermoso. ¡Se ha convertido en un básico de mi despensa!"</p>
+                            <p class="font-bold text-primary-dark-red text-xl">Sofía R.</p>
+                            <p class="text-sm">Amante de los productos naturales</p>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination mt-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="textured-bg py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-serif font-bold text-center mb-12 text-primary-dark-red" data-aos="fade-down">Hablemos con los Apicultores</h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-xl" data-aos="fade-right" data-aos-duration="1000">
+                        <h3 class="text-3xl font-serif font-bold mb-6 text-secondary-gold">Detalles y Horarios</h3>
+                        
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-map-marker-alt text-2xl text-primary-dark-red mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Dirección</h4>
+                                <p>Ruta del Néctar Km 5. Apícola El Panal, Puebla, México.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-clock text-2xl text-primary-dark-red mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Horario de Atención</h4>
+                                <p>Lunes a Viernes: 9:00 - 18:00 hrs</p>
+                                <p>Sábados: 9:00 - 13:00 hrs</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start mb-4">
+                            <i class="fas fa-phone text-2xl text-primary-dark-red mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Llámanos</h4>
+                                <p>(+52) 55 1234 5678</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mb-6">
+                            <i class="fas fa-envelope text-2xl text-primary-dark-red mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Escríbenos</h4>
+                                <p>contacto@mielnatural.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold text-lg mb-3">Síguenos en Redes</h4>
+                            <div class="flex space-x-4 text-2xl">
+                                <a href="#" target="_blank" class="text-text-dark hover:text-secondary-gold transition duration-300"><i class="fab fa-facebook"></i></a>
+                                <a href="#" target="_blank" class="text-text-dark hover:text-secondary-gold transition duration-300"><i class="fab fa-instagram"></i></a>
+                                <a href="#" target="_blank" class="text-text-dark hover:text-secondary-gold transition duration-300"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="bg-white p-8 rounded-xl shadow-xl">
+                            <h3 class="text-3xl font-serif font-bold mb-6 text-primary-dark-red">Envíanos un Mensaje</h3>
+                            <form id="contact-form">
+                                <div class="mb-4">
+                                    <label for="name" class="block text-sm font-medium mb-1">Nombre</label>
+                                    <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-secondary-gold focus:border-secondary-gold transition duration-300">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                                    <input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-secondary-gold focus:border-secondary-gold transition duration-300">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="message" class="block text-sm font-medium mb-1">Mensaje</label>
+                                    <textarea id="message" name="message" rows="4" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-secondary-gold focus:border-secondary-gold transition duration-300"></textarea>
+                                </div>
+                                <button type="submit" class="cta-button w-full py-3 text-lg rounded-lg text-white font-bold">Enviar Mensaje</button>
+                                <p id="form-message" class="mt-3 text-center text-sm font-bold hidden"></p>
+                            </form>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-xl shadow-xl overflow-hidden">
+                            <h3 class="text-xl font-serif font-bold mb-4 text-primary-dark-red">Nuestra Ubicación</h3>
+                            <div class="aspect-w-16 aspect-h-9">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31209.27239407613!2d-85.38887537583204!3d12.101261990924161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7363e990fd545f%3A0x91f23ddf11c1af78!2sJuigalpa!5e0!3m2!1ses-419!2sni!4v1760996709135!5m2!1ses-419!2sni" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-text-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-8 mb-8">
+                
+                <div>
+                    <h4 class="text-2xl font-serif font-bold text-secondary-gold mb-4">Miel Natural</h4>
+                    <p class="text-sm max-w-xs">Comprometidos con la calidad artesanal y orgánica. Llevamos la pureza del panal a tu hogar desde 2010. ¡Sabor que cuida de ti!</p>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-serif font-bold text-secondary-gold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#quienes-somos" class="hover:text-primary-dark-red transition duration-300 nav-link">Nuestra Historia</a></li>
+                        <li><a href="#servicios" class="hover:text-primary-dark-red transition duration-300 nav-link">Catálogo de Productos</a></li>
+                        <li><a href="#galeria" class="hover:text-primary-dark-red transition duration-300 nav-link">Galería de Sabores</a></li>
+                        <li><a href="#" class="hover:text-primary-dark-red transition duration-300">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-serif font-bold text-secondary-gold mb-4">Síguenos</h4>
+                    <p class="text-sm mb-4">Mantente al tanto de nuestras cosechas y promociones especiales.</p>
+                    <div class="flex space-x-4 text-3xl">
+                        <a href="#" target="_blank" class="hover:text-secondary-gold transition duration-300"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#" target="_blank" class="hover:text-secondary-gold transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="hover:text-secondary-gold transition duration-300"><i class="fab fa-twitter-square"></i></a>
+                        <a href="https://wa.me/XXXXXXXXXX" target="_blank" class="hover:text-secondary-gold transition duration-300"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-sm pt-4">
+                © 2025 Miel Natural para la Familia. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // -----------------------------------------------------------
+            // 1. Inicialización de Librerías (AOS, Swiper.js)
+            // -----------------------------------------------------------
+            
+            // Inicialización de AOS
+            AOS.init({
+                duration: 1200,
+                once: true, // Animación solo una vez al hacer scroll
+            });
+
+            // Inicialización de Swiper para el Hero
+            new Swiper('.hero-swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+
+            // Inicialización de Swiper para Testimonios
+            new Swiper('.testimonial-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 7000,
+                    disableOnInteraction: true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 1.5,
+                        spaceBetween: 40,
+                    }
+                }
+            });
+
+            // -----------------------------------------------------------
+            // 2. Lógica de Menú Móvil (Abrir/Cerrar)
+            // -----------------------------------------------------------
+            
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('open');
+                // Cambiar icono de hamburguesa a cerrar y viceversa
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+            
+            // Cerrar menú móvil al hacer clic en un enlace
+            document.querySelectorAll('#mobile-menu a.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // -----------------------------------------------------------
+            // 3. Header Sticky y Oscurecimiento al Scroll
+            // -----------------------------------------------------------
+            
+            const header = document.getElementById('header');
+            const scrollThreshold = 100; // Pixeles para activar el cambio
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > scrollThreshold) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+
+            // -----------------------------------------------------------
+            // 4. Desplazamiento Suave (Scroll Suave)
+            // -----------------------------------------------------------
+            
+            // Usando el atributo scroll-smooth en <html> para scroll nativo.
+            // Esta función asegura el ajuste del offset para el header fijo.
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // 80px es un estimado para el tamaño del header fijo
+                        const offset = targetElement.getBoundingClientRect().top + window.scrollY - 80; 
+                        window.scrollTo({
+                            top: offset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // -----------------------------------------------------------
+            // 5. Lógica del Filtrado de Galería
+            // -----------------------------------------------------------
+            
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filterValue = this.getAttribute('data-filter');
+
+                    // Cambiar estilo del botón activo
+                    filterButtons.forEach(btn => btn.classList.remove('cta-button', 'bg-secondary-gold', 'hover:bg-opacity-90'));
+                    filterButtons.forEach(btn => {
+                        if (!btn.classList.contains('cta-button')) {
+                            btn.classList.add('bg-gray-500', 'hover:bg-gray-700');
+                        }
+                    });
+                    this.classList.add('cta-button');
+                    this.classList.remove('bg-gray-500', 'hover:bg-gray-700');
+
+
+                    // Mostrar/Ocultar elementos
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            // Inicializar con 'Todo' seleccionado
+            document.querySelector('.filter-btn[data-filter="all"]').click();
+
+            // -----------------------------------------------------------
+            // 6. Validación Simple de Formulario de Contacto
+            // -----------------------------------------------------------
+
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validación simple
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                if (name && email && message) {
+                    // Simular envío exitoso
+                    formMessage.classList.remove('hidden', 'text-red-500');
+                    formMessage.classList.add('text-green-600');
+                    formMessage.textContent = '¡Mensaje enviado con éxito! En breve nos pondremos en contacto.';
+                    contactForm.reset();
+                    
+                    // Ocultar mensaje después de 5 segundos
+                    setTimeout(() => {
+                        formMessage.classList.add('hidden');
+                    }, 5000);
+                } else {
+                    formMessage.classList.remove('hidden', 'text-green-600');
+                    formMessage.classList.add('text-red-500');
+                    formMessage.textContent = 'Por favor, complete todos los campos requeridos.';
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
